@@ -1,0 +1,11 @@
+/* Donut hole style */
+.donut-hole {
+    -fx-fill: white;
+    -fx-stroke: black;
+    -fx-stroke-width: 1;
+}
+
+/* Optional: remove extra padding from chart content */
+.chart-content {
+    -fx-padding: 0;
+}

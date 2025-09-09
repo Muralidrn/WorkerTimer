@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane minHeight="800.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.workertimer2.HelloController">
+  
+   <children>
+      <Button layoutX="94.0" layoutY="650.0" prefHeight="30" prefWidth="100" text="Reports" AnchorPane.bottomAnchor="119.20000000000002" AnchorPane.leftAnchor="94.0" AnchorPane.topAnchor="650.0" />
+      <Button layoutX="408.0" layoutY="650.0" prefHeight="30" prefWidth="100" text="Leave" AnchorPane.bottomAnchor="119.20000000000002" AnchorPane.rightAnchor="94.0" AnchorPane.topAnchor="650.0" />
+      <Label fx:id="DateLabel" layoutX="32.0" layoutY="45.0" prefHeight="32.0" prefWidth="126.0" text="yyyy-mm-dd" textAlignment="CENTER">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="449.0" layoutY="109.0" minHeight="25.0" minWidth="100.0" prefHeight="26.0" prefWidth="126.0" text="      User Name" textAlignment="CENTER" AnchorPane.rightAnchor="24.600000000000023">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Pane layoutX="462.0" layoutY="14.0" prefHeight="98.0" prefWidth="100.0">
+         <children>
+            <Circle centerX="50.0" centerY="50.0" fill="#a47f9f59" radius="44.0" stroke="WHITE" strokeType="INSIDE" />
+            <Circle fx:id="imageCircle" centerX="50.0" centerY="50.0" fill="#45222238" radius="32.0" stroke="#3b2b3900" strokeType="INSIDE" />
+         </children>
+      </Pane>
+      <HBox layoutX="32.0" layoutY="91.0" prefHeight="36.0" prefWidth="100.0">
+         <children>
+            <Label fx:id="hoursLabel" text="00">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <Label text=":">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <Label fx:id="minutesLabel" text="00">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <Label text=":">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <Label fx:id="secondsLabel" text="00">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <Pane layoutX="120.0" layoutY="221.0" prefHeight="200.0" prefWidth="335.0" AnchorPane.bottomAnchor="393.59999999999997" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="191.0">
+         <children>
+      
+            <Label fx:id="welcomeText1" layoutX="32.0" layoutY="23.0" prefHeight="36.0" prefWidth="335.0" style="-fx-font-size: 25;" text="Good morning, Mr.Xxxxxxxxx" textAlignment="CENTER" />
+            <Label fx:id="welcomeText2" layoutX="70.0" layoutY="84.0" prefHeight="32.0" prefWidth="260.0" style="-fx-font-size: 18;" text="You have start the work process!" textAlignment="CENTER">
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
+            </Label>
+            <Button fx:id="onHelloButtonClick" layoutX="149.0" layoutY="146.0" mnemonicParsing="false" onAction="#onHelloButtonClick" prefHeight="30.0" prefWidth="100.0" text="Clock in" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
