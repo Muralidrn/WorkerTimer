@@ -1,0 +1,62 @@
+name: Build Linux Package
+
+# Trigger workflow on tag push or manual run
+on:
+  push:
+    tags:
+      - '*'  # Trigger on any new tag
+  workflow_dispatch:  # Allows manual trigger from GitHub Actions
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Java 20
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: 21
+
+      # Step 3: Build the JAR using Maven
+      - name: Build JAR
+        run: mvn clean package
+
+      # Step 4: Download JavaFX Linux SDK
+      - name: Download JavaFX SDK
+        run: |
+          curl -L -o javafx-sdk.zip https://gluonhq.com/download/javafx-21-sdk-linux.zip
+          unzip javafx-sdk.zip -d javafx-sdk
+
+      # Step 5: Build runtime image with jlink
+      - name: Build runtime image
+        run: |
+          jlink \
+            --module-path javafx-sdk/javafx-sdk-21/lib:$JAVA_HOME/jmods \
+            --add-modules javafx.controls,javafx.fxml \
+            --output target/image
+
+      # Step 6: Build Linux .deb package
+      - name: Build Linux .deb package
+        run: |
+          jpackage \
+            --type deb \
+            --input target/ \
+            --main-jar demo-1.0-SNAPSHOT.jar \
+            --main-class com.example.workertimer2.HelloApplication \
+            --name WorkerTimer \
+            --dest target/ \
+            --icon src/main/resources/icon.png \
+            --runtime-image target/image
+
+      # Step 7: Upload artifact
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: WorkerTimer.deb
+          path: target/WorkerTimer.deb
