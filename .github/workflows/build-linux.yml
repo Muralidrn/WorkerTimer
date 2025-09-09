@@ -52,14 +52,16 @@ jobs:
       # Step 6: Build Linux .deb package
       - name: Build Linux .deb package
         run: |
-         jpackage \
-         --type deb \
-         --input target/ \
-         --main-jar demo-1.0-SNAPSHOT.jar \
-         --main-class com.example.workertimer2.HelloApplication \
-         --name WorkerTimer \
-         --dest target/ \
-         --runtime-image target/image
+          jpackage \
+            --type deb \
+            --input target/ \
+            --main-jar ${{ env.JAR_NAME }} \
+            --main-class com.example.workertimer2.HelloApplication \
+            --name WorkerTimer \
+            --dest target/ \
+            --icon src/main/resources/icon.png \
+            --runtime-image target/image
+
 
 
       # Step 7: Upload artifact
