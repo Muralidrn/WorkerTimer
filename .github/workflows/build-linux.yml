@@ -30,8 +30,9 @@ jobs:
       # Step 4: Download JavaFX Linux SDK
       - name: Download JavaFX SDK
         run: |
-         curl -L -o javafx-sdk.tar.gz https://jdk.java.net/javafx21/openjfx-21_linux-x64_bin.tar.gz
-         tar -xzf javafx-sdk.tar.gz
+         curl -L -o javafx-sdk.tar javafx-sdk-21_linux-x64_bin.tar
+         tar -xf javafx-sdk.tar
+
 
 
         # Step 5: Build runtime image with jlink
