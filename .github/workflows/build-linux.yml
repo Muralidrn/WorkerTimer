@@ -27,6 +27,12 @@ jobs:
       - name: Build JAR
         run: mvn clean package
 
+      - name: List target folder
+        run: ls -lh target/
+
+      - name: Find shaded JAR file
+        run: echo "JAR_NAME=$(ls target/*-shaded.jar | xargs -n 1 basename)" >> $GITHUB_ENV
+
       # Step 4: Download JavaFX Linux SDK
       - name: Download JavaFX SDK
         run: |
@@ -59,8 +65,8 @@ jobs:
             --main-class com.example.workertimer2.HelloApplication \
             --name WorkerTimer \
             --dest target/ \
-            --icon src/main/resources/icon.png \
             --runtime-image target/image
+
 
 
 
