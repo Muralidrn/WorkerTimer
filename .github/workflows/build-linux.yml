@@ -30,8 +30,9 @@ jobs:
       # Step 4: Download JavaFX Linux SDK
       - name: Download JavaFX SDK
         run: |
-          curl -L -o javafx-sdk.zip https://download.java.net/java/GA/javafx/21/binaries/openjfx-21_linux-x64_bin-sdk.zip
-          unzip javafx-sdk.zip
+         curl -L -o javafx-sdk.zip https://download2.gluonhq.com/openjfx/21/openjfx-21_linux-x64_bin-sdk.zip
+         unzip javafx-sdk.zip
+
 
 
 
